@@ -1,6 +1,6 @@
 /*! 
  * ember-json-api
- * Built on 2014-05-21
+ * Built on 2014-06-02
  * http://github.com/daliwali/ember-json-api
  * Copyright (c) 2014 Dali Zheng
  */
@@ -114,6 +114,10 @@ DS.JsonApiSerializer = DS.RESTSerializer.extend({
         route = route.substr(1);
       }
 
+      if(route.substr(0, this.namespace.length).toLowerCase() === this.namespace.toLowerCase()) {
+          route = route.substr(this.namespace.length + 1);
+      }
+      
       DS.set('_routes.' + Ember.String.singularize(key), route);
     }
   },

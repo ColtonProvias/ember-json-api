@@ -106,6 +106,10 @@ DS.JsonApiSerializer = DS.RESTSerializer.extend({
         route = route.substr(1);
       }
 
+      if(route.substr(0, this.namespace.length).toLowerCase() === this.namespace.toLowerCase()) {
+          route = route.substr(this.namespace.length + 1);
+      }
+
       DS.set('_routes.' + Ember.String.singularize(key), route);
     }
   },
